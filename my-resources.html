@@ -165,7 +165,7 @@
               <div class="h-44 rounded-xl bg-gray-100 border flex items-center justify-center">
                 ${r.file_type === "video"
             ? `<video controls class="w-full h-full object-cover">
-                       <source src="${API}/uploads/${r.file_path}">
+                       <iframe src="${API}/uploads/${r.file_path}"></iframe>
                      </video>`
             : r.file_type === "pdf"
               ? `<iframe src="${API}/uploads/${r.file_path}" class="w-full h-full"></iframe>`
