@@ -136,6 +136,14 @@
       location.href = "login.html";
     }
 
+    function openFile(path) {
+  fetch(API + "/file/" + path)
+    .then(res => res.json())
+    .then(data => {
+      window.open(data.url, "_blank");
+    });
+}
+
     // LOAD RESOURCES
     fetch(`${API}/my-resources/${user.id}`)
       .then(res => res.json())
@@ -162,25 +170,17 @@
             </div>
 
 <div class="p-4">
-  <div class="h-44 rounded-xl bg-gray-100 border flex items-center justify-center">
-    ${
-      r.file_type === "video"
-        ? `
-          <video controls class="w-full h-full object-cover rounded-xl">
-            <source src="${r.file_path}" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
-        `
-        : r.file_type === "pdf"
-        ? `
-          <iframe
-            src="${r.file_path}"
-            class="w-full h-full rounded-xl"
-          ></iframe>
-        `
-        : `<span class="text-gray-400">No preview</span>`
-    }
-  </div>
+<div class="h-44 rounded-xl bg-gray-100 border flex items-center justify-center cursor-pointer"
+     onclick="openFile('${r.file_path}')">
+  ${
+    r.file_type === "video"
+      ? `<span class="text-indigo-600 font-semibold">▶ Play Video</span>`
+      : r.file_type === "pdf"
+      ? `<span class="text-indigo-600 font-semibold">📄 Open PDF</span>`
+      : `<span class="text-gray-400">Open File</span>`
+  }
+</div>
+
 
   <span class="inline-block mt-3 text-xs bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full">
     ${r.file_type?.toUpperCase() || "FILE"}
