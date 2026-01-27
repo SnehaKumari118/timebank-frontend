@@ -1,4 +1,4 @@
-const API = "https://timebank-bend-erafaucdbqercucc.eastasia-01.azurewebsites.net";
+const API = "https://bend-tb-bceefzh4azg3buba.eastasia-01.azurewebsites.net";
 
 /* ===== USER FUNCTIONS ===== */
 function getUser() {
