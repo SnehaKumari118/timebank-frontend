@@ -146,7 +146,7 @@
       <textarea name="bio" class="w-full border p-2 mb-2 rounded" placeholder="Bio"></textarea>
       <input name="skills_offered" class="w-full border p-2 mb-2 rounded" placeholder="Skills Offered">
       <input name="skills_needed" class="w-full border p-2 mb-2 rounded" placeholder="Skills Needed">
-      <input type="file" name="image" class="mb-3">
+      <input type="file" name="profile_pic" class="mb-3">
 
       <div class="flex justify-end gap-2">
         <button type="button" onclick="closeEdit()" class="border px-3 py-1 rounded">
@@ -236,8 +236,7 @@
       e.preventDefault();
 
       const formData = new FormData(editForm);
-      formData.append("user_id", user.id);
-
+      formData.append("id", user.id);
 
       fetch(API + "/update-profile", {
         method: "POST",
